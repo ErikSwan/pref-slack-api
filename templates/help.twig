@@ -1,0 +1,39 @@
+{% set greetings = [
+    'Hey there!',
+    'Whatup!',
+    'Yo!',
+    "What's poppin?",
+]%}
+{% set emojis = [
+    ':smile:',
+    ':simple_smile:',
+    ':grin:',
+    ':grinning:',
+    ':smiley:',
+    ':blush:',
+    ':wink:',
+    ':+1:',
+]%}
+{{ random(greetings) }} There are a few options as to how you can use this command to find out about upcoming outreach events:
+
+*Finding events by date*
+> `/outreach` (that is, without any arguments)
+Will give you all of the outreach events on the calendar for today. This is an easy way to figure out what's going on today and who's signed up!
+
+> `/outreach [date]`
+Will give you the outreach events for the given day (like `/outreach tomorrow` or `/outreach next Monday`). Sometimes I might misinterpret the date you give me, so make sure that the date I give you is what you wanted. If you want to be explicit, you can also pass an exact date, like `/outreach 11/03`. That would give you everything for November 3!
+
+
+*Finding events by person*
+> `/outreach me`
+Will give you the next few events that you are signed up for on the calendar!
+
+> `/outreach [person]`
+Will give you the next few events for the person you specify (like `/outreach @eswan`). Note that you have to use the @ syntax (this should make things easier anyways since you will get an autocomplete list when you are typing!).
+
+
+*Enabling/disabling reminders*
+Did you know that I can remind you of your upcoming events automatically? It's true! {{ random(emojis) }} If you have them enabled, I will DM you an hour before every event. You can enable or disable these reminders as you wish:
+> `/outreach reminders enable` or `/outreach reminders disable`
+
+I hope this helps you! {{ random(emojis) }}. Always feel free to post in <#C0A07NHCZ|slack-dev> or <#C09UHFF0V|slack-help-tips> too if you have questions!

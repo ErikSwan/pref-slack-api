@@ -1,0 +1,42 @@
+{% set happies = [
+    'Yahoo!',
+    'Yipee!',
+    'Oh yeah!',
+    'Have a great day!',
+    'Aww yeah!',
+    'I also wanted to remind you of how awesome you are.',
+]%}
+{% set sads = [
+    'Oh no! :(',
+    'Sorry!',
+    'Oops!',
+    'Uh oh!',
+    'I had a sad.'
+]%}
+{% set happy_emojis = [
+    ':smile:',
+    ':simple_smile:',
+    ':grin:',
+    ':grinning:',
+    ':smiley:',
+    ':blush:',
+    ':wink:',
+    ':+1:',
+]%}
+{% set sad_emojis = [
+    ':worried:',
+    ':disappointed:',
+    ':pensive:',
+    ':confused:',
+    ':neutral_face:',
+    ':cry:',
+]%}
+
+{% if error == 'no_results' %}
+{% if type == 'user' %}Doesn't look like {{ user }} has any upcoming events! {{ random(happies) }} {{ random(happy_emojis) }}
+{% else %}I couldn't find any events for {{ date }}! {{ random(happies) }} {{ random(happy_emojis) }}{% endif %}
+{% elseif error == 'no_user' %}
+{{ random(sads) }} {{ random(sad_emojis) }} I couldn't find {{ user }}! Maybe check that you have the right username?
+{% else %}
+{{ random(sads) }} I don't understand what you're asking me for. {{ random(sad_emojis) }} Try `/outreach help`!
+{% endif %}

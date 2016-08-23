@@ -1,0 +1,43 @@
+{% set greetings = [
+    'Hey there!',
+    'Whatup!',
+    'Yo!',
+    "What's poppin?",
+]%}
+{% set emojis = [
+    ':smile:',
+    ':simple_smile:',
+    ':grin:',
+    ':grinning:',
+    ':smiley:',
+    ':blush:',
+    ':wink:',
+    ':+1:',
+]%}
+{% if type == 'date' %}
+{{ random(greetings) }} {{ random(emojis) }} Here are the events for *{{ input }} ({{ date|date('n/j') }})*:
+{% else %}
+{{ random(greetings) }} {{ random(emojis) }} Here are {% if type == 'me' %}your{% else %}the{% endif %} next few events{% if type == 'user'%} for <@{{ user.id }}|{{ user.name }}>{% endif %}!
+
+{% endif %}
+{% for eventgroup in results %}
+{% if type != 'date' %}
+*{{ eventgroup.datestring|upper }} ({{ eventgroup.date|date('n/j') }})*
+{% endif %}
+{% for event in eventgroup.events %}
+>*{{ event.name }}* at *{{ event.time|date('g:ia') }}*{% if event.location is not empty %} in *{{ event.location }}*{% endif %}
+
+{% if event.attendees is empty %}>  (Nobody is signed up!)
+{% endif %}
+{% for person in event.attendees %}
+>   ➜ {% if person.real_name %}{{ person.real_name }} (<@{{ person.id }}|{{ person.name }}>){% else %}{{ person.email }}{% endif %}
+
+{% endfor %}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}

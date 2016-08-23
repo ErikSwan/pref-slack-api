@@ -1,0 +1,38 @@
+{% set greetings = [
+    'Hey there!',
+    'Whatup!',
+    'Yo!',
+    "What's poppin?",
+]%}
+{% set happies = [
+    'Yahoo!',
+    'Yipee!',
+    'Oh yeah!',
+    'Have a great day!',
+    'Aww yeah!',
+    'I also wanted to remind you of how awesome you are.',
+]%}
+{% set emojis = [
+    ':smile:',
+    ':simple_smile:',
+    ':grin:',
+    ':grinning:',
+    ':smiley:',
+    ':blush:',
+    ':wink:',
+    ':+1:',
+]%}
+
+{{ random(greetings) }} {% if state %}
+{% if prev_state %}
+{{ random(emojis) }} Reminders are already enabled! If you think they might be broken, tell <#C0A07NHCZ|slack-dev>!
+{% else %}
+I've enabled reminders! You'll get a message from me around an hour before every event! {{ random(emojis) }} {{ random(happies) }}
+{% endif %}
+{% else %}
+{% if not prev_state %}
+{{ random(emojis) }} Reminders are already disabled for you! If you think they might be broken, tell <#C0A07NHCZ|slack-dev>!
+{% else %}
+I've disabled reminders! Sorry to see you go! You can always re-enable them if you want! {{ random(emojis) }}
+{% endif %}
+{% endif %}

@@ -1,0 +1,11 @@
+{% set emojis = [
+    ':smile:',
+    ':simple_smile:',
+    ':grin:',
+    ':grinning:',
+    ':smiley:',
+    ':blush:',
+    ':wink:',
+    ':+1:',
+]%}
+Hey, {{ name }}, this is a reminder that you are signed up for *{{ event.name }}* at *{{ event.time|date('g:ia') }}*{% if event.location is not empty %} in *{{ event.location }}*{% endif %}! Thanks! {{ random(emojis) }}
